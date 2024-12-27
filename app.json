@@ -1,0 +1,340 @@
+{
+    "info": {
+      "_postman_id": "5b130bc9-881b-4a6b-941b-5edb123459ab",
+      "name": "Library Management System API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create User",
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:5000/users",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"Rajesh Kumar\",\n    \"contact_number\": \"9876543210\",\n    \"email\": \"rajesh.kumar@example.com\",\n    \"password\": \"password123\",\n    \"user_type\": \"student\"\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 201', function() { pm.response.to.have.status(201); });",
+                "pm.test('User added successfully', function() { pm.response.to.have.jsonBody('message', 'User added successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get All Users",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/users"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains users array', function() { pm.response.to.have.jsonBody('users'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get Single User by ID",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/users/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains user name', function() { pm.response.to.have.jsonBody('name'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Update User",
+        "request": {
+          "method": "PUT",
+          "url": "http://localhost:5000/users/1",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"Rajesh Kumar\",\n    \"contact_number\": \"9876543210\",\n    \"email\": \"rajesh.newemail@example.com\",\n    \"password\": \"newpassword123\",\n    \"user_type\": \"student\"\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Email is updated', function() { pm.response.to.have.jsonBody('email', 'rajesh.newemail@example.com'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Delete User",
+        "request": {
+          "method": "DELETE",
+          "url": "http://localhost:5000/users/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('User deleted successfully', function() { pm.response.to.have.jsonBody('message', 'User deleted successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Create Book",
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:5000/books",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"title\": \"Learn Python\",\n    \"edition\": \"2nd\",\n    \"author\": \"John Doe\",\n    \"total_copies\": 10,\n    \"available_copies\": 5,\n    \"cost\": 500,\n    \"source\": \"Purchased\"\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 201', function() { pm.response.to.have.status(201); });",
+                "pm.test('Book added successfully', function() { pm.response.to.have.jsonBody('message', 'Book added successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get All Books",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/books"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains books array', function() { pm.response.to.have.jsonBody('books'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get Single Book by ID",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/books/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains book title', function() { pm.response.to.have.jsonBody('title'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Update Book",
+        "request": {
+          "method": "PUT",
+          "url": "http://localhost:5000/books/1",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"title\": \"Advanced Python Programming\",\n    \"edition\": \"3rd\",\n    \"author\": \"Dr. Raghav\",\n    \"total_copies\": 15,\n    \"available_copies\": 14,\n    \"cost\": 600,\n    \"source\": \"Purchased\"\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Book edition is updated', function() { pm.response.to.have.jsonBody('edition', '3rd'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Delete Book",
+        "request": {
+          "method": "DELETE",
+          "url": "http://localhost:5000/books/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Book deleted successfully', function() { pm.response.to.have.jsonBody('message', 'Book deleted successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Create Transaction Record",
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:5000/transactions",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"user_id\": 1,\n    \"book_id\": 2\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 201', function() { pm.response.to.have.status(201); });",
+                "pm.test('Transaction recorded successfully', function() { pm.response.to.have.jsonBody('message', 'Transaction recorded successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get All Transactions",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/transactions"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains transactions array', function() { pm.response.to.have.jsonBody('transactions'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get Transaction by ID",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/transactions/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Response contains transaction user_id', function() { pm.response.to.have.jsonBody('user_id'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Update Transaction Record",
+        "request": {
+          "method": "PUT",
+          "url": "http://localhost:5000/transactions/1",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"user_id\": 1,\n    \"book_id\": 3\n}"
+          },
+          "header": []
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Transaction updated successfully', function() { pm.response.to.have.jsonBody('message', 'Transaction updated successfully'); });"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Delete Transaction Record",
+        "request": {
+          "method": "DELETE",
+          "url": "http://localhost:5000/transactions/1"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 200', function() { pm.response.to.have.status(200); });",
+                "pm.test('Transaction deleted successfully', function() { pm.response.to.have.jsonBody('message', 'Transaction deleted successfully'); });"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
